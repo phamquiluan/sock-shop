@@ -19,7 +19,7 @@ spec:
         component: core
     spec:
       containers:
-      - image: grafana/grafana:7.5.5
+      - image: grafana/grafana:9.5.1 # - image: grafana/grafana:7.5.5
         name: grafana-core
         imagePullPolicy: IfNotPresent
         # env:
@@ -32,11 +32,11 @@ spec:
             cpu: 100m
             memory: 100Mi
         env:
-          # The following env variables set up basic auth twith the default admin user and admin password.
+          # The following env variables set up basic auth twith the default admin user and prom-operator password.
           - name: GF_SECURITY_ADMIN_USER
             value: admin
           - name: GF_SECURITY_ADMIN_PASSWORD
-            value: admin
+            value: prom-operator
         readinessProbe:
           httpGet:
             path: /login
@@ -50,4 +50,4 @@ spec:
       - name: grafana-persistent-storage
         emptyDir: {}
       nodeSelector:
-        beta.kubernetes.io/os: linux
+        kubernetes.io/os: linux
