@@ -34,8 +34,8 @@ spec:
             for file in *-datasource.json ; do
               if [ -e "$file" ] ; then
                 echo "importing $file" &&
-                curl --silent --fail --show-error \
-                  --request POST http://admin:prom-operator@grafana/api/datasources \
+                curl --show-error \
+                  --request POST "http://admin:prom-operator@grafana/api/datasources" \
                   --header "Content-Type: application/json" \
                   --header "Accept: application/json" \
                   --data-binary "@$file" ;
@@ -45,8 +45,8 @@ spec:
             for file in *-dashboard.json ; do
               if [ -e "$file" ] ; then
                 echo "importing $file" &&
-                curl --silent --fail --show-error \
-                  --request POST http://admin:prom-operator@grafana/api/dashboards/import \
+                curl --show-error \
+                  --request POST "http://admin:prom-operator@grafana/api/dashboards/import" \
                   --header "Content-Type: application/json" \
                   --header "Accept: application/json" \
                   --data-binary "@$file" ;
