@@ -23,8 +23,15 @@ spec:
       containers:
       - name: prometheus
         image: prom/prometheus:v2.43.1
+        resources:
+          requests:
+            cpu: 2 
+            memory: 10240Mi
+          limits:
+            cpu: 2
+            memory: 10240Mi 
         args:
-        - '--storage.tsdb.retention=360h'
+        - '--storage.tsdb.retention=2h'
         - '--config.file=/etc/prometheus/prometheus.yml'
         ports:
         - name: web
