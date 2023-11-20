@@ -25,12 +25,12 @@ spec:
         # env:
         resources:
           # keep request = limit to keep this container in guaranteed class
-          limits:
-            cpu: 2
-            memory: 500Mi
           requests:
-            cpu: 2
-            memory: 500Mi
+            cpu: 200m
+            memory: 100Mi
+          limits:
+            cpu: 300m
+            memory: 200Mi
         env:
           # The following env variables set up basic auth twith the default admin user and prom-operator password.
           - name: GF_SECURITY_ADMIN_USER

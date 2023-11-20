@@ -25,11 +25,11 @@ spec:
         image: prom/prometheus:v2.43.1
         resources:
           requests:
-            cpu: 2 
-            memory: 10240Mi
+            cpu: 1
+            memory: 2048Mi
           limits:
-            cpu: 2
-            memory: 10240Mi 
+            cpu: 1
+            memory: 2048Mi
         args:
         - '--storage.tsdb.retention=2h'
         - '--config.file=/etc/prometheus/prometheus.yml'
